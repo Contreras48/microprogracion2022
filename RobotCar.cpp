@@ -73,11 +73,23 @@ Carro::Carro(){
 //METODOS QUE SE EJECUTAN CON LA INTERRUPCION
 //Son metodos Staticos pero static va en el .H
 void Carro::contarRuedaI(){
-    Carro::contaI = Carro::contaI >= 65000 ? 1 : Carro::contaI++;
+    //Carro::contaI = Carro::contaI >= 65000 ? 1 : Carro::contaI++;
+
+    if (Carro::contaI < 65000)
+        Carro::contaI++;
+    else
+        Carro::contaI = 1;
+    
     Serial.println(Carro::contaI);
 }
 void Carro::contarRuedaD(){
-    Carro::contaD = Carro::contaD >= 65000 ? 1 : Carro::contaD++;
+    //Carro::contaD = Carro::contaD >= 65000 ? 1 : Carro::contaD++;
+
+    if (Carro::contaD < 65000)
+        Carro::contaD++;
+    else
+        Carro::contaD = 1;
+    
     Serial.println(Carro::contaD);
 }
 
