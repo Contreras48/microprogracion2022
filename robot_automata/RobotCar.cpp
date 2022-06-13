@@ -66,7 +66,7 @@ Carro::Carro(){
     //RISING indica que se disparara la interrupcion cuando el pin cambie de 0 a 1
     attachInterrupt(digitalPinToInterrupt(encoderI), Carro::contarRuedaI,RISING);
     attachInterrupt(digitalPinToInterrupt(encoderD), Carro::contarRuedaD,RISING);
-	Carro::contaI=0; //contadores a cero
+	  Carro::contaI=0; //contadores a cero
     Carro::contaD=0;
 }
 
@@ -80,7 +80,7 @@ void Carro::contarRuedaI(){
     else
         Carro::contaI = 1;
     
-    Serial.println(Carro::contaI);
+    //Serial.println(Carro::contaI);
 }
 void Carro::contarRuedaD(){
     //Carro::contaD = Carro::contaD >= 65000 ? 1 : Carro::contaD++;
@@ -90,7 +90,7 @@ void Carro::contarRuedaD(){
     else
         Carro::contaD = 1;
     
-    Serial.println(Carro::contaD);
+    //Serial.println(Carro::contaD);
 }
 
 //metodo para mover el carro + adelante, - atras, potencia abs
@@ -131,12 +131,22 @@ void Carro::mover(int izquierda, int derecha){
 
     derecha=abs(derecha);
     izquierda=abs(izquierda);
+
+    if(contaI > contaD){
+      izquierda=map(izquierda,0,10,0,potenciaMAX-20);   
+      derecha=map(derecha,0,10,0,potenciaMAX);
+    }else if(contaI < contaD){
+      izquierda=map(izquierda,0,10,0,potenciaMAX);   
+      derecha=map(derecha,0,10,0,potenciaMAX-20);
+    }else{
+      izquierda=map(izquierda,0,10,0,potenciaMAX);   
+      derecha=map(derecha,0,10,0,potenciaMAX);
+    }
     
-    izquierda=map(izquierda,0,10,0,potenciaMAX);   
-    derecha=map(derecha,0,10,0,potenciaMAX);
+//    izquierda=map(izquierda,0,10,0,potenciaMAX);   
+//    derecha=map(derecha,0,10,0,potenciaMAX);
     analogWrite(potenciaD,derecha);
     analogWrite(potenciaI,izquierda);
-
 }
 
 //Gira la cantidad de grados especifica: - a la izquierda, + derecha

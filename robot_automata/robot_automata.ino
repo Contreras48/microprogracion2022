@@ -1,7 +1,7 @@
 #include "RobotCar.h"
 Carro car;
-int detener = 10;
-int giro = 90;
+int detener = 20;
+int giro = 45;
 
 void setup(){
     Serial.begin(9600);
