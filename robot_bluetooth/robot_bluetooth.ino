@@ -1,14 +1,14 @@
 #include "RobotCar.h"
-//#include "SoftwareSerial.h"
+#include "SoftwareSerial.h"
 Carro car;
 String DatoBT;
 char boton;
-//SoftwareSerial Serial1(10,11);
+SoftwareSerial mySerial(10,11);
 
  
 void setup(){
   Serial.begin(9600);
-  Serial1.begin(9600);
+  mySerial.begin(9600);
   
   Serial.println("Conectando");
   
@@ -17,7 +17,7 @@ void setup(){
   }
 
   Serial.println("Conectado");
-  Serial1.println("Listo!!");
+  mySerial.println("Listo!!");
   
   
 }
@@ -27,14 +27,14 @@ void loop(){
 }
 
 void BTfuncion (){
-  if (Serial1.available()>0){
-           DatoBT= Serial1.readStringUntil('#');
+  if (mySerial.available()>0){
+           DatoBT= mySerial.readStringUntil('#');
            Driver();
            Serial.println(DatoBT);
      } 
            
   if (Serial.available()){
-        Serial1.write(Serial.read());
+        mySerial.write(Serial.read());
   }
 }
 
