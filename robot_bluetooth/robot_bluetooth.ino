@@ -40,10 +40,10 @@ void BTfuncion (){
 
 void Driver(){
   
-  String Grados = DatoBT.substring(0,3);
-  String Potencia = DatoBT.substring(3,6);
+  String grados = DatoBT.substring(0,3);
+  int potencia = DatoBT.substring(3,6).toInt();
   boton = DatoBT.charAt(6); 
-  Serial.println(Grados);
+  Serial.println(grados);
   Serial.println(boton);
 
 
@@ -65,31 +65,32 @@ void Driver(){
       delay(70);
      break;   
      case '0': 
-      int GradoJoystick = Grados.toInt();
-      int PotMotor = Potencia.toInt();
-      Serial.print(" Grados: ");
+      int GradoJoystick = grados.toInt();
+      //int PotMotor = potencia.toInt();
+      // =  potencia,toInt();
+      Serial.print(" grados: ");
       Serial.println(GradoJoystick);
-      Serial.print(" Potencia: ");
-      Serial.println(PotMotor);
-      int valorMapeado = map(PotMotor, 0, 10, 0, 255);
+      Serial.print(" potencia: ");
+      Serial.println(car.potenciaMAX);
+      potencia = map(potencia, 0, 10, 0, 255);
       if (GradoJoystick >= 45 && GradoJoystick < 135 ){
         // UP
-      car.mover(valorMapeado,valorMapeado);
+      car.mover(potencia,potencia);
       delay(50);  
       }
       if (GradoJoystick >= 0 && GradoJoystick < 45 || GradoJoystick >= 335 && GradoJoystick < 359 ){
         // RIGHT
-      car.mover(valorMapeado,-valorMapeado);
+      car.mover(potencia,-potencia);
       delay(50);  
       }
       if (GradoJoystick >= 225 && GradoJoystick < 335){
         // DOWN
-      car.mover(-valorMapeado,-valorMapeado);
+      car.mover(-potencia,-potencia);
       delay(50);  
       }
       if (GradoJoystick >= 135 && GradoJoystick < 225 ){
         // LEFT
-      car.mover(-valorMapeado,valorMapeado);
+      car.mover(-potencia,potencia);
       delay(50);  
       }
       

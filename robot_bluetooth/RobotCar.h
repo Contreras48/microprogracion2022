@@ -19,7 +19,7 @@ class Carro{
 	byte adelanteD=7; // Adelante llanta Derecha
 	byte atrasD=8;  // atras llanta Derecha
 	byte potenciaD=9;  // potencia llanta Derecha pin PWM
-	byte potenciaMAX=200;
+	byte potenciaMAX=255;
 	
 	//DEFINIENDO LAS INTERRUPCIONES--USAN MIEMBROS ESTATICOS
 	static volatile unsigned int contaI; //contador de las vueltas de la llanta Izquierda
