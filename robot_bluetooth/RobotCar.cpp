@@ -105,19 +105,19 @@ void Carro::mover(int izquierda, int derecha){
     derecha=abs(derecha);
     izquierda=abs(izquierda);
 
-    if(contaI > contaD){
-      izquierda=map(izquierda,0,10,0,potenciaMAX-20);   
-      derecha=map(derecha,0,10,0,potenciaMAX);
-    }else if(contaI < contaD){
-      izquierda=map(izquierda,0,10,0,potenciaMAX);   
-      derecha=map(derecha,0,10,0,potenciaMAX-20);
-    }else{
-      izquierda=map(izquierda,0,10,0,potenciaMAX);   
-      derecha=map(derecha,0,10,0,potenciaMAX);
-    }
+//    if(contaI > contaD){
+//      izquierda=map(izquierda,0,10,0,potenciaMAX-20);   
+//      derecha=map(derecha,0,10,0,potenciaMAX);
+//    }else if(contaI < contaD){
+//      izquierda=map(izquierda,0,10,0,potenciaMAX);   
+//      derecha=map(derecha,0,10,0,potenciaMAX-20);
+//    }else{
+//      izquierda=map(izquierda,0,10,0,potenciaMAX);   
+//      derecha=map(derecha,0,10,0,potenciaMAX);
+//    }
     
-//    izquierda=map(izquierda,0,10,0,potenciaMAX);   
-//    derecha=map(derecha,0,10,0,potenciaMAX);
+    izquierda=map(izquierda,0,10,0,potenciaMAX);   
+    derecha=map(derecha,0,10,0,potenciaMAX);
     analogWrite(potenciaD,derecha);
     analogWrite(potenciaI,izquierda);
 }
